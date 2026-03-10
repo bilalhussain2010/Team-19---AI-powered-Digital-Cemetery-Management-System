@@ -1,0 +1,54 @@
+
+## Example Workflow
+
+### Booking Flow
+
+1. Select available grave from grid
+2. Enter customer information
+3. System calculates total cost
+4. Record payment
+5. Generate booking record
+
+### Burial Authorization Flow
+
+1. System verifies payment completion
+2. Burial authorization is recorded
+3. Grave status changes to **occupied**
+4. Burial register updated
+
+---
+
+## Screenshots
+
+| Grave Grid | Booking |
+|------------|---------|
+| ![Grave Grid](screenshots/grave-grid.png) | ![Booking](screenshots/booking-screen.png) |
+
+---
+
+## Demo
+
+Demo video:
+
+[Watch Demo Video](demo/demo-video-link.md)
+
+---
+
+## Use Cases
+
+Designed for:
+
+- Islamic Centers
+- Mosques
+- Cemetery Committees
+- Burial Management Teams
+
+---
+
+## Future Enhancements
+
+- Public grave search portal
+- Customer self-service portal
+- Automated payment reminders
+- Mobile application
+- Advanced reporting dashboards
