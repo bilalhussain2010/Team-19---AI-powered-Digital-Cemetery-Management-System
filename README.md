@@ -98,4 +98,3 @@ Authentication:
 
 ---
 
-## System Architecture
