@@ -1,0 +1,212 @@
+{
+  "name": "gave management chatbot kamal ki web",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Answer the user's question using ONLY the information provided in the RAG knowledge base.\n\n\n\n\n\nUser Question:\n{{ $json.message }}",
+        "options": {
+          "systemMessage": "You are the ICSJ Cemetery Assistant.\n\nYour job is to help users find cemetery grave records.\n\nWhen a user asks about graves, burial status, payment balance, or grave details:\n\n1. Ask for the customer name if it is not provided.\n2. When the customer name is provided, extract the person's full name from the message.\n3. Call the tool \"HTTP Request\" with the parameter:\n\ncustomer_name\n\nExample:\n\nUser: \"What is the grave booking for Hamid Zubair?\"\n\nTool call:\ncustomer_name = \"Hamid Zubair\"\n\nDo not include extra words like \"what is the grave booking\".\nOnly send the person's name.\n\nAfter the tool returns the grave records, format the response in a clear and clean human-readable format.\n\nDo NOT display raw JSON or technical field names.\n\nFormat the response exactly like this:\n\nGrave Records Found\n\nCustomer: <customer_name>\nPhone: <phone>\n\nGrave 1\nLocation: <grave_name>\nGrave Code: <grave_code>\nStatus: <grave_status>\nTotal Cost: $<total_cost>\nPaid: $<total_paid>\nOutstanding Balance: $<outstanding_balance>\n\nGrave 2\nLocation: <grave_name>\nGrave Code: <grave_code>\nStatus: <grave_status>\nTotal Cost: $<total_cost>\nPaid: $<total_paid>\nOutstanding Balance: $<outstanding_balance>\n\nIf multiple graves exist, list them as Grave 1, Grave 2, Grave 3, etc.\n\nIf no records are found, respond with:\n\n\"No grave records were found for this customer. Please check the spelling of the name or provide the full name.\"\nEnsure the response is plain text without JSON formatting or quotation marks."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        272,
+        -64
+      ],
+      "id": "ea881f7f-c3d7-4b45-b50b-61e8653ea4ef",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-5-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        208,
+        128
+      ],
+      "id": "fab3a36e-a573-40ea-bb58-db0d10068200",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "Xa76f7vMJJypH68P",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": "Search grave records in the cemetery database by customer name.\n\nUse this tool when the user asks about:\n- grave location\n- payment balance\n- grave details\n- burial status",
+        "url": "https://hxzjxvrappkukzdypkln.supabase.co/rest/v1/chatbot_grave_details",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "5"
+            },
+            {
+              "name": "customer_name",
+              "value": "=ilike.*{{$fromAI(\"customer_name\")}}*"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "ANON KEY"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer ANON KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.4,
+      "position": [
+        560,
+        144
+      ],
+      "id": "cfc983bb-87f9-42c4-a5ee-b99b47c898af",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{$json.response}}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        800,
+        -80
+      ],
+      "id": "2dea1382-26a3-415e-96bc-8928a7738467",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "314688a7-d368-4d81-a427-9965099d7fc3",
+              "name": "response",
+              "value": "={{$json.output}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        608,
+        -64
+      ],
+      "id": "b5b2f958-52ab-44f5-bb6c-afea458b0520",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "705f4009-89a7-4a40-8293-42090d98691c",
+      "name": "When chat message received",
+      "webhookId": "0337502d-fd8a-4bbb-815a-b76d66da7739"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "900677db-caed-459c-99ab-b751fa5ad5c9",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "8da5c057d1a6d73b600766be843b1d8cf887dbc0bc58bb6e71dd06b90345689b"
+  },
+  "id": "LCHtVVPlbRAtfZVl",
+  "tags": []
+}

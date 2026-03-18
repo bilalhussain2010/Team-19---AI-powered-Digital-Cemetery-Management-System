@@ -1,0 +1,144 @@
+{
+  "name": "icsj email workflow kamal ki web",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://ejpvusyzuuhlrxcvdobs.supabase.co/rest/v1/booking_email_details",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "booking_id",
+              "value": "=eq.{{ $json.body.record.id }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "ANON KEY"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer ANON KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        144,
+        0
+      ],
+      "id": "5e6e78c2-4309-4dc1-9767-943b80d6fd29",
+      "name": "Fetch booking details from supabase"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{$json.email}}",
+        "subject": "ICSJ Cemetery Booking Confirmation",
+        "message": "=<h2>Islamic Center Cemetery Booking Confirmation</h2>\n\n<p>Dear {{$json.customer_name}},</p>\n\n<p>Your grave booking has been successfully recorded.</p>\n\n<h3>Grave Details</h3>\n\n<table border=\"1\" cellpadding=\"6\" cellspacing=\"0\">\n<tr>\n<td><b>Grave Name</b></td>\n<td><b>Grave Code</b></td>\n</tr>\n\n{{$json.graves_table}}\n\n</table>\n\n<h3>Payment Summary</h3>\n\n<table border=\"1\" cellpadding=\"6\" cellspacing=\"0\">\n\n<tr>\n<td>Total Cost</td>\n<td>{{$json.total_cost}}</td>\n</tr>\n\n<tr>\n<td>Paid</td>\n<td>{{$json.total_paid}}</td>\n</tr>\n\n<tr>\n<td>Outstanding Balance</td>\n<td>{{$json.outstanding_balance}}</td>\n</tr>\n\n</table>\n\n<p>Please keep this email for your records.</p>\n\n<p>\nIslamic Center Cemetery Office<br>\nEmail: cemetery@icsj.org\n</p>",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        512,
+        -48
+      ],
+      "id": "79649232-494b-4d69-b79b-71912d6462f8",
+      "name": "Send a message",
+      "webhookId": "414685dc-4409-4f7e-8332-18d9b500defe",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "zqOOSReHqGvMJoIa",
+          "name": "scallerai2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const graves = [];\n\nlet email = \"\";\nlet customer_name = \"\";\nlet total_cost = 0;\nlet total_paid = 0;\nlet outstanding_balance = 0;\n\nfor (const item of items) {\n\n  graves.push(\n    `<tr>\n       <td>${item.json.grave_name}</td>\n       <td>${item.json.grave_code}</td>\n     </tr>`\n  );\n\n  email = item.json.email;\n  customer_name = item.json.customer_name;\n  total_cost = item.json.total_cost;\n  total_paid = item.json.total_paid;\n  outstanding_balance = item.json.outstanding_balance;\n}\n\nreturn [{\n  json: {\n    email,\n    customer_name,\n    graves_table: graves.join(\"\"),\n    total_cost,\n    total_paid,\n    outstanding_balance\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        320,
+        -16
+      ],
+      "id": "b801a896-0326-4364-91a2-39ce538adebf",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "44219f4c-bfd3-452d-9311-ed268f65ad3a",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -96,
+        -16
+      ],
+      "id": "8ded5fbc-dbdf-4b42-8900-9a1c519be8dc",
+      "name": "Webhook",
+      "webhookId": "44219f4c-bfd3-452d-9311-ed268f65ad3a"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Fetch booking details from supabase": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Fetch booking details from supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "851a0c32-1145-46c4-a321-89f81a797d22",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "8da5c057d1a6d73b600766be843b1d8cf887dbc0bc58bb6e71dd06b90345689b"
+  },
+  "id": "5nPEPjJtFz4PHFxy",
+  "tags": []
+}
