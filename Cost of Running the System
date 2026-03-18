@@ -1,0 +1,90 @@
+## Cost of Running the System
+
+This section provides an estimated monthly cost for deploying and running the ICSJ Grave Management System in a production environment. Actual costs may vary depending on usage, scale, and infrastructure choices.
+
+---
+
+### 1. Hosting (Frontend)
+
+- Platform: Vercel / Netlify  
+- Estimated Cost: Free – $20/month  
+
+---
+
+### 2. Backend & Database (Supabase)
+
+- Services:
+  - PostgreSQL Database  
+  - Authentication  
+  - APIs  
+- Estimated Cost: $25/month (Pro Plan)  
+
+---
+
+### 3. Automation (n8n)
+
+- Option 1: Self-hosted (recommended)
+  - Hosting (VPS): $5 – $10/month  
+- Option 2: n8n Cloud
+  - Cost: $20+/month  
+
+---
+
+### 4. Email Service
+
+- Services: SMTP / SendGrid / Resend  
+- Estimated Cost: Free – $15/month (depending on email volume)  
+
+---
+
+### 5. Domain & DNS
+
+- Domain name: $10 – $15/year  
+- DNS (Cloudflare): Free  
+
+---
+
+### 6. AI Chatbot (Optional Cost)
+
+- If using OpenAI / external API:
+  - Estimated Cost: $5 – $20/month (based on usage)  
+- If using local/static assistant:
+  - Cost: Minimal / Free  
+
+---
+
+### Estimated Total Monthly Cost
+
+| Setup Type        | Estimated Cost |
+|------------------|---------------|
+| Minimum Setup    | $10 – $20     |
+| Standard Setup   | $30 – $60     |
+| Scaled Setup     | $60 – $120    |
+
+---
+
+### Notes
+
+- Costs increase with:
+  - Number of users  
+  - Database size  
+  - Email volume  
+  - AI usage  
+
+- Self-hosting automation (n8n) significantly reduces cost.
+
+---
+
+### Cost Optimization Strategies
+
+- Use free tiers for early deployment  
+- Self-host n8n workflows  
+- Optimize database queries  
+- Limit unnecessary API calls  
+- Use caching where possible  
+
+---
+
+## Summary
+
+The ICSJ Grave Management System is designed to be cost-efficient and scalable. A fully functional production system can be deployed at a relatively low monthly cost, making it suitable for small to large Islamic centers.
