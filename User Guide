@@ -1,20 +1,253 @@
+# ICSJ Grave Management System – User Guide
+
+## Introduction
+
+The ICSJ Grave Management System is a digital platform designed to help Islamic centers manage cemetery operations efficiently. It provides tools for managing grave inventory, bookings, payments, burial records, reporting, and administrative controls in a secure and centralized environment.
+
+This guide explains how to use the system step by step.
+
+---
+
+## System Access
+
+1. Open the Islamic center website.
+2. Click on the **Book a Grave** option.
+3. You will be redirected to the Grave Management System.
+4. Enter your login credentials.
+5. Click **Login** to access the dashboard.
+
+Note: Only authorized staff members can access the system.
+
+---
+
+## Dashboard Overview
+
+After login, the main dashboard displays a visual cemetery layout in a grid format.
+
+Each grave is color-coded:
+
+- Green: Available  
+- Yellow: Reserved  
+- Blue: Booked  
+- Red: Occupied  
+
+This layout provides a real-time view of cemetery status.
+
+---
 
 ## Booking a Grave
 
-1. Open Grave Grid
-2. Select available grave
-3. Enter customer information
-4. Save booking
+The booking process consists of three steps.
 
-## Recording Payment
+### Step 1: Select Grave
 
-1. Open booking record
-2. Enter payment amount
-3. Select payment mode
+1. Click on an available grave (green) in the grid.
+2. Select one or multiple graves if required.
+3. Proceed to the next step.
 
-## Authorizing Burial
+---
 
-1. Open Burial Authorization screen
-2. Select eligible grave
-3. Enter deceased details
-4. Confirm burial
+### Step 2: Enter Customer Details
+
+Enter the following information:
+
+- First Name  
+- Last Name  
+- Contact Number  
+- Email Address  
+- Gender  
+- Membership Type  
+
+Address Details:
+
+- House Number  
+- Street Number  
+- City  
+- Zip Code  
+
+Click **Next** to continue.
+
+---
+
+### Step 3: Enter Payment Details
+
+1. Review:
+   - Number of graves selected  
+   - Unit price  
+   - Total amount  
+
+2. Select Payment Mode:
+   - Cash  
+   - Cheque  
+
+3. Select Payment Type:
+   - Full Payment  
+   - Installments  
+
+4. Enter payment amount.
+
+5. Click **Submit Booking**.
+
+---
+
+## Booking Confirmation
+
+Once the booking is submitted:
+
+- The system records the booking.
+- Grave status is updated automatically.
+- A confirmation email is sent to the customer.
+
+The email includes:
+
+- Grave details  
+- Total cost  
+- Payment summary  
+- Outstanding balance  
+
+---
+
+## Reporting Features
+
+The system provides multiple reporting options.
+
+### Search by Name
+- Search booking records using customer name.
+
+### Search by Grave
+- Enter grave code to view details.
+
+### Financial Reports
+- Total booking value  
+- Payments received  
+- Outstanding balances  
+- Installment tracking  
+
+### Cemetery Status
+- View counts of:
+  - Available graves  
+  - Reserved graves  
+  - Booked graves  
+  - Occupied graves  
+
+---
+
+## Payment Update (Installments)
+
+1. Open the Payment Update module.
+2. Search for the booking.
+3. Enter the installment amount.
+4. Save the payment.
+
+The system will automatically update:
+- Total paid amount  
+- Remaining balance  
+
+---
+
+## Burial Management
+
+### Burial Authorization
+
+1. Open the Burial Management module.
+2. Locate the booking.
+3. Verify payment status.
+4. Click **Authorize Burial**.
+
+The system will:
+- Record burial details  
+- Update grave status to occupied  
+
+---
+
+### Burial Register
+
+The Burial Register maintains permanent records including:
+
+- Deceased name  
+- Burial date  
+- Grave location  
+- Customer details  
+- Payment status  
+
+You can search and view historical burial records at any time.
+
+---
+
+## AI Assistants
+
+### Website Assistant
+
+Available on the Islamic center website.
+
+Helps users with:
+- Services  
+- Events  
+- Programs  
+- Grave booking information  
+
+---
+
+### Grave Assistant
+
+Available inside the system.
+
+Allows staff to:
+- Search bookings by name  
+- Retrieve grave details  
+- Check payment status  
+
+Simply type a query to get instant results.
+
+---
+
+## Administrative Controls
+
+### Customer Data Correction
+
+- Update customer name, contact details, or address.
+
+---
+
+### Payment Correction
+
+- Reverse incorrect payments.
+- Ensures accurate financial records.
+
+---
+
+### Cancel Booking
+
+- A booking can only be canceled after payment reversal.
+- Maintains data and financial consistency.
+
+---
+
+## Security Features
+
+- Secure login system  
+- Role-based access  
+- Row Level Security (RLS) at database level  
+- Protection of sensitive burial and financial data  
+
+---
+
+## Best Practices
+
+- Always verify grave selection before booking  
+- Ensure accurate customer information entry  
+- Record payments immediately  
+- Use reports regularly for monitoring  
+- Perform corrections carefully to maintain data integrity  
+
+---
+
+## Support
+
+For system issues or assistance, contact the system administrator or technical support team.
+
+---
+
+## Conclusion
+
+The ICSJ Grave Management System provides a complete digital solution for cemetery operations, enabling Islamic centers to manage graves, bookings, payments, and burial records efficiently while ensuring accuracy, transparency, and security.
