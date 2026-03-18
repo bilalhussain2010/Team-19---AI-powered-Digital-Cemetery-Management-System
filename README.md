@@ -18,6 +18,14 @@ You can access the live system here:
 
 Note: Access to the management system is restricted to authorized users.
 
+
+## Video Demonstration
+
+A complete system walkthrough demonstrating all features, including booking workflow, reporting, payment management, burial management, AI assistants, and administrative controls, is provided in the repository.
+
+Video link is as : https://drive.google.com/file/d/1yAfuElpvPiGaOLdLPGZ2PhA68Jsp34l7/view?usp=sharing
+
+
 ## Key Features
 
 ### Website Integration
@@ -144,13 +152,6 @@ Allows updating customer information such as:
 #### Booking Cancellation
 - Bookings can be canceled only after reversing associated payments  
 - Ensures financial and data consistency  
-
-
-## Video Demonstration
-
-A complete system walkthrough demonstrating all features, including booking workflow, reporting, payment management, burial management, AI assistants, and administrative controls, is provided in the repository.
-
-Video link is as : https://drive.google.com/file/d/1yAfuElpvPiGaOLdLPGZ2PhA68Jsp34l7/view?usp=sharing
 
 
 ## Tech Stack
