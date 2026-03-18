@@ -6,6 +6,18 @@ The Grave Management System is a modern, AI-enabled cemetery management platform
 
 The system is integrated with the Islamic center website, allowing seamless access to cemetery services while improving operational efficiency, transparency, and data accuracy.
 
+## Live Demo
+
+You can access the live system here:
+
+- Islamic Center Website: https://kamalkeweb.com/
+- Grave Management System: https://grave.kamalkeweb.com/
+- Login Credentails for Grave Management System
+- User id : bilalhussain2010@yahoo.com
+- Password : Test@123456
+
+Note: Access to the management system is restricted to authorized users.
+
 ## Key Features
 
 ### Website Integration
