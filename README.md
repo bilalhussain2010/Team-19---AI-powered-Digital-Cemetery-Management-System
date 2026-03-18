@@ -1,100 +1,157 @@
-# Team-19---AI-powered-Digital-Cemetery-Management-System
-# AI-Powered Cemetery Management System
+# Grave Management System
 
-A modern digital platform designed to help Islamic Centers manage cemetery operations efficiently.
+## Overview
 
-This system replaces paper registers and manual spreadsheets with a centralized digital platform for managing grave inventory, bookings, payments, and burial records.
+The Grave Management System is a modern, AI-enabled cemetery management platform designed for Islamic centers. It replaces traditional paper-based and spreadsheet-driven processes with a secure, centralized system for managing grave inventory, bookings, payments, burial records, reporting, and administrative operations.
 
----
-
-## Problem
-
-Many Islamic centers still manage cemetery operations manually using paper registers and Excel sheets.
-
-This often results in:
-
-- Difficulty tracking grave availability
-- Manual record searching
-- Payment tracking errors
-- Double grave allocation
-- Lack of centralized records
-- Poor reporting capabilities
-
-As cemetery records grow over time, manual management becomes inefficient and error-prone.
-
----
-
-## Solution
-
-The **AI-Powered Cemetery Management System** provides a centralized digital platform that manages the entire lifecycle of cemetery operations including:
-
-- Grave inventory management
-- Customer registration
-- Grave booking
-- Payment tracking
-- Burial authorization
-- Burial register
-- Operational reporting
-- AI-powered query assistant
-
----
+The system is integrated with the Islamic center website, allowing seamless access to cemetery services while improving operational efficiency, transparency, and data accuracy.
 
 ## Key Features
 
-### Visual Grave Layout
-A cemetery grid that displays graves with color-coded status.
+### Website Integration
+The system is integrated with the Islamic center website. A “Book a Grave” option allows users to access the grave management system directly from the website, improving accessibility and workflow continuity.
 
-- 🟢 Available
-- 🟡 Reserved
-- 🔵 Booked
-- 🔴 Occupied
+### Security and Access Control
+- Secure staff login system  
+- Database-level protection using Row Level Security (RLS)  
+- Ensures only authorized users can access and manage records  
 
-### Booking Management
-Staff can select graves from the grid and create bookings within seconds.
+### Grave Inventory Management
+- Visual cemetery layout in grid format  
+- Real-time status tracking of graves:
+  - Available  
+  - Reserved  
+  - Booked  
+  - Occupied  
 
-### Payment Tracking
-Supports:
+### Booking Workflow
 
-- Full payments
-- Installments
-- Automatic balance calculation
-- Email payment confirmations
+The system provides a structured three-step booking process:
 
-### Burial Authorization
-The system verifies payment status before allowing burial authorization.
+1. Grave Selection  
+   Staff can select one or multiple graves from the visual layout. Multiple selections support family plot reservations.
 
-### Burial Register
-Maintains a permanent digital record of burials including:
+2. Customer Details  
+   Capture customer information including name, contact details, membership type, and address.
 
-- Deceased name
-- Burial date
-- Grave location
-- Authorized personnel
+3. Payment Processing  
+   - Payment modes: Cash or Cheque  
+   - Payment types: Full payment or Installments  
 
-### AI Assistant
-Administrators can query booking status, customer records, and grave information using an AI-powered assistant.
+### Automated Email Notifications
+Upon successful booking, the system automatically sends a confirmation email to the customer. The email includes:
+- Allocated grave details  
+- Total cost  
+- Payment summary  
+- Outstanding balance  
 
----
+This ensures transparency and provides a permanent record for the customer.
 
-## Technology Stack
+### Financial Management
+The system tracks and manages:
+- Total booking value  
+- Payments received  
+- Outstanding balances  
+- Installment payments  
 
-Frontend:
-- Antigravity Low-Code Platform
-- React Components
+This enables accurate and auditable financial record keeping.
 
-Backend:
-- Supabase PostgreSQL
+### Reporting and Analytics
 
-Database Features:
-- SQL Views
-- Database Triggers
-- Stored Procedures
+#### Search Capabilities
+- Search booking records by customer name  
+- Search graves by grave code  
 
-Automation:
-- n8n workflows
+#### Financial Dashboard
+- Overview of total revenue  
+- Payments collected  
+- Outstanding balances  
+- Installment tracking  
 
-Authentication:
-- Supabase Auth
+#### Cemetery Status Dashboard
+- Real-time overview of:
+  - Available graves  
+  - Reserved graves  
+  - Booked graves  
+  - Occupied graves  
 
----
+### Installment Payment Management
+A dedicated payment update module allows staff to:
+- Record installment payments  
+- Automatically update paid and remaining balances  
+
+### Burial Management
+
+#### Burial Authorization
+- Ensures burial is authorized based on booking and payment status  
+
+#### Burial Register
+- Maintains permanent burial records including:
+  - Deceased name  
+  - Burial date  
+  - Grave location  
+  - Customer details  
+  - Payment status  
+
+
+### AI-Based Features
+
+#### Website Assistant
+An AI chatbot integrated into the Islamic center website provides information about:
+- Services  
+- Events  
+- Education programs  
+- Grave booking procedures  
+
+#### Grave Assistant
+An AI assistant within the system allows staff to:
+- Retrieve booking details  
+- Check grave status  
+- View payment information  
+using simple conversational queries  
+
+### Automated Email Notifications
+Upon successful booking, the system automatically sends a confirmation email to the customer. The email includes:
+- Allocated grave details  
+- Total cost  
+- Payment summary  
+- Outstanding balance  
+
+### Administrative Controls
+
+#### Customer Data Correction
+Allows updating customer information such as:
+- Name  
+- Contact details  
+- Address  
+
+#### Payment Correction
+- Reverse incorrect transactions  
+- Maintain accurate financial records  
+
+#### Booking Cancellation
+- Bookings can be canceled only after reversing associated payments  
+- Ensures financial and data consistency  
+
+
+## Video Demonstration
+
+A complete system walkthrough demonstrating all features, including booking workflow, reporting, payment management, burial management, AI assistants, and administrative controls, is provided in the repository.
+
+Video link is as : https://drive.google.com/file/d/1yAfuElpvPiGaOLdLPGZ2PhA68Jsp34l7/view?usp=sharing
+
+
+## Tech Stack
+
+- Frontend: React / Next.js  
+- Backend: Supabase / Node.js  
+- Database: PostgreSQL  
+- Authentication: Supabase Auth  
+- Automation: n8n (email workflows)  
+- AI: Chatbot integration  
+
+
+## Project Status
+
+Active development / MVP ready
 
